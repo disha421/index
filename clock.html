@@ -1,0 +1,372 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Analog Watch</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Light Blue + Light Green Background */
+            background: linear-gradient(
+                135deg,
+                lightblue,
+                lightgreen
+            );
+
+            font-family: Arial, sans-serif;
+        }
+
+        /* Watch Outer Circle */
+        .watch {
+            width: 400px;
+            height: 400px;
+
+            border-radius: 50%;
+
+            background: #f8c8dc; /* Light Pink */
+
+            border: 12px solid white;
+
+            box-shadow:
+                0 0 25px rgba(0, 0, 0, 0.25),
+                inset 0 0 20px rgba(0, 0, 0, 0.15);
+
+            position: relative;
+        }
+
+        /* Numbers */
+        .number {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            padding-top: 18px;
+
+            font-size: 28px;
+            font-weight: bold;
+
+            color: #333;
+        }
+
+        .number span {
+            display: block;
+        }
+
+        /* Position Numbers */
+
+        .n1 {
+            transform: rotate(30deg);
+        }
+
+        .n1 span {
+            transform: rotate(-30deg);
+        }
+
+        .n2 {
+            transform: rotate(60deg);
+        }
+
+        .n2 span {
+            transform: rotate(-60deg);
+        }
+
+        .n3 {
+            transform: rotate(90deg);
+        }
+
+        .n3 span {
+            transform: rotate(-90deg);
+        }
+
+        .n4 {
+            transform: rotate(120deg);
+        }
+
+        .n4 span {
+            transform: rotate(-120deg);
+        }
+
+        .n5 {
+            transform: rotate(150deg);
+        }
+
+        .n5 span {
+            transform: rotate(-150deg);
+        }
+
+        .n6 {
+            transform: rotate(180deg);
+        }
+
+        .n6 span {
+            transform: rotate(-180deg);
+        }
+
+        .n7 {
+            transform: rotate(210deg);
+        }
+
+        .n7 span {
+            transform: rotate(-210deg);
+        }
+
+        .n8 {
+            transform: rotate(240deg);
+        }
+
+        .n8 span {
+            transform: rotate(-240deg);
+        }
+
+        .n9 {
+            transform: rotate(270deg);
+        }
+
+        .n9 span {
+            transform: rotate(-270deg);
+        }
+
+        .n10 {
+            transform: rotate(300deg);
+        }
+
+        .n10 span {
+            transform: rotate(-300deg);
+        }
+
+        .n11 {
+            transform: rotate(330deg);
+        }
+
+        .n11 span {
+            transform: rotate(-330deg);
+        }
+
+        /* Clock Hands */
+
+        .hand {
+            position: absolute;
+
+            left: 50%;
+            bottom: 50%;
+
+            transform-origin: bottom center;
+
+            border-radius: 10px;
+
+            transform: translateX(-50%) rotate(0deg);
+        }
+
+        /* Hour Hand */
+        .hour {
+            width: 10px;
+            height: 95px;
+
+            background: #333;
+
+            z-index: 3;
+        }
+
+        /* Minute Hand */
+        .minute {
+            width: 7px;
+            height: 125px;
+
+            background: #555;
+
+            z-index: 4;
+        }
+
+        /* Second Hand */
+        .second {
+            width: 3px;
+            height: 145px;
+
+            background: red;
+
+            z-index: 5;
+        }
+
+        /* Center Circle */
+        .center {
+            position: absolute;
+
+            width: 22px;
+            height: 22px;
+
+            background: red;
+
+            border: 4px solid white;
+
+            border-radius: 50%;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            z-index: 10;
+        }
+
+        /* Small Tick Marks */
+        .tick {
+            position: absolute;
+
+            width: 4px;
+            height: 15px;
+
+            background: #555;
+
+            left: 50%;
+            top: 5px;
+
+            transform-origin: 50% 195px;
+        }
+
+        .t1  { transform: translateX(-50%) rotate(0deg); }
+        .t2  { transform: translateX(-50%) rotate(30deg); }
+        .t3  { transform: translateX(-50%) rotate(60deg); }
+        .t4  { transform: translateX(-50%) rotate(90deg); }
+        .t5  { transform: translateX(-50%) rotate(120deg); }
+        .t6  { transform: translateX(-50%) rotate(150deg); }
+        .t7  { transform: translateX(-50%) rotate(180deg); }
+        .t8  { transform: translateX(-50%) rotate(210deg); }
+        .t9  { transform: translateX(-50%) rotate(240deg); }
+        .t10 { transform: translateX(-50%) rotate(270deg); }
+        .t11 { transform: translateX(-50%) rotate(300deg); }
+        .t12 { transform: translateX(-50%) rotate(330deg); }
+
+        /* Responsive */
+        @media (max-width: 500px) {
+            .watch {
+                width: 300px;
+                height: 300px;
+            }
+
+            .tick {
+                transform-origin: 50% 145px;
+            }
+
+            .hour {
+                height: 70px;
+            }
+
+            .minute {
+                height: 90px;
+            }
+
+            .second {
+                height: 105px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="watch">
+
+        <!-- Numbers -->
+        <div class="number n1"><span>1</span></div>
+        <div class="number n2"><span>2</span></div>
+        <div class="number n3"><span>3</span></div>
+        <div class="number n4"><span>4</span></div>
+        <div class="number n5"><span>5</span></div>
+        <div class="number n6"><span>6</span></div>
+        <div class="number n7"><span>7</span></div>
+        <div class="number n8"><span>8</span></div>
+        <div class="number n9"><span>9</span></div>
+        <div class="number n10"><span>10</span></div>
+        <div class="number n11"><span>11</span></div>
+        <div class="number n12"><span>12</span></div>
+
+        <!-- Tick Marks -->
+        <div class="tick t1"></div>
+        <div class="tick t2"></div>
+        <div class="tick t3"></div>
+        <div class="tick t4"></div>
+        <div class="tick t5"></div>
+        <div class="tick t6"></div>
+        <div class="tick t7"></div>
+        <div class="tick t8"></div>
+        <div class="tick t9"></div>
+        <div class="tick t10"></div>
+        <div class="tick t11"></div>
+        <div class="tick t12"></div>
+
+        <!-- Clock Hands -->
+        <div class="hand hour" id="hour"></div>
+        <div class="hand minute" id="minute"></div>
+        <div class="hand second" id="second"></div>
+
+        <!-- Center -->
+        <div class="center"></div>
+
+    </div>
+
+
+    <script>
+
+        function showTime() {
+
+            const now = new Date();
+
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            /*
+                1 hour = 30 degrees
+                1 minute = 6 degrees
+                1 second = 6 degrees
+            */
+
+            let hourDegree =
+                (hours % 12) * 30 +
+                minutes * 0.5;
+
+            let minuteDegree =
+                minutes * 6 +
+                seconds * 0.1;
+
+            let secondDegree =
+                seconds * 6;
+
+            document.getElementById("hour").style.transform =
+                `translateX(-50%) rotate(${hourDegree}deg)`;
+
+            document.getElementById("minute").style.transform =
+                `translateX(-50%) rotate(${minuteDegree}deg)`;
+
+            document.getElementById("second").style.transform =
+                `translateX(-50%) rotate(${secondDegree}deg)`;
+        }
+
+        /* Clock ko har second update karega */
+        setInterval(showTime, 1000);
+
+        /* Page load hote hi time show kare */
+        showTime();
+
+    </script>
+
+</body>
+</html>
+```
